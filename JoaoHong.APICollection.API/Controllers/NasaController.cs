@@ -1,5 +1,5 @@
 ﻿using JoaoHong.APICollection.Domain.DTO;
-using JoaoHong.APICollection.Domain.Port.Application;
+using JoaoHong.APICollection.Domain.Port.Application.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,10 +17,10 @@ namespace JoaoHong.APICollection.API.Controllers
             _nasaService = nasaService;
         }
 
-        [HttpGet("FotoMarte")]
+        [HttpPost("FotoMarte")]
         public async Task<IActionResult> ClimaMarte([FromBody] MarsPhotos model)
         {
-            var resultLista = _nasaService.ListMarsPhotos();
+            var resultLista = await _nasaService.ListMarsPhotos();
             return Ok();
         }
     }
