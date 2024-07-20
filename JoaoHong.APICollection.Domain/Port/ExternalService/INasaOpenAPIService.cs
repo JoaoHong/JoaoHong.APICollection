@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JoaoHong.APICollection.Domain.Port.Application
+namespace JoaoHong.APICollection.Domain.Port.ExternalService
 {
     public interface INasaOpenAPIService
     {

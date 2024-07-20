@@ -1,5 +1,5 @@
 ﻿using JoaoHong.APICollection.Domain.DTO;
-using JoaoHong.APICollection.Domain.Port.Application;
+using JoaoHong.APICollection.Domain.Port.ExternalService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
