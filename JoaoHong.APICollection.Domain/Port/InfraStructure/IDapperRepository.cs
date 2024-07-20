@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace JoaoHong.APICollection.Domain.Port.InfraStructure
+﻿namespace JoaoHong.APICollection.Domain.Port.InfraStructure
 {
-    public interface IDapperRepository<T>
+	public interface IDapperRepository<T>
     {
         Task<T> GetById(int id);
         Task<List<T>> GetAll();

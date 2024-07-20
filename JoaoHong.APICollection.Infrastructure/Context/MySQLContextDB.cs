@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 
 namespace JoaoHong.APICollection.Infrastructure.Context
 {
-    public class MySQLConxtextDB : IMySQLContextDB
+    public class MySQLContextDB : IMySQLContextDB
     {
         private readonly IConfiguration _configuration;
         private MySqlConnection conn = null;
 
-        public MySQLConxtextDB(IConfiguration configuration)
+        public MySQLContextDB(IConfiguration configuration)
         {
             _configuration = configuration;
         }

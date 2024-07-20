@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace JoaoHong.APICollection.Infrastructure.Repository.Repositories
 {
-    public class ApplicationLoggerRepository : MongoCommandRepository<APILogger>, IApplicationLogger
+    public class ApplicationLoggerRepository : MongoCommandRepository<APILogger>, IApplicationLoggerRepository
     {
         public ApplicationLoggerRepository(IMongoContextDB mongoContextDB) : base(mongoContextDB)
         {

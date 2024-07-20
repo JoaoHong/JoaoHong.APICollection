@@ -1,3 +1,5 @@
+using JoaoHong.APICollection.Application;
+using JoaoHong.APICollection.Infrastructure;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
@@ -22,9 +24,12 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     });
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddHttpClient();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+InfrastructureServices.AddInfrastructureServices(builder.Services);
+ApplicationServices.AddApplicationServices(builder.Services);
 
 var app = builder.Build();
 

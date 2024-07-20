@@ -9,6 +9,14 @@ namespace JoaoHong.APICollection.Infrastructure.Repository
 {
     public abstract class DapperRepository<T> : IDapperRepository<T>
     {
+        private readonly IMySQLContextDB _mySqlContext;
+        private readonly string _connectionString;
+
+        public DapperRepository(IMySQLContextDB mySQLContext, string connectionString = null)
+        {
+            _mySqlContext = mySQLContext;
+            _connectionString = connectionString;
+        }
         public Task<bool> DeleteAsync(int id)
         {
             throw new NotImplementedException();
