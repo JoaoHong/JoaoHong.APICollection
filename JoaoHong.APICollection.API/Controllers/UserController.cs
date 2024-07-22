@@ -1,4 +1,5 @@
-﻿using JoaoHong.APICollection.Domain.Entities;
+﻿using JoaoHong.APICollection.Domain.DTO;
+using JoaoHong.APICollection.Domain.Entities;
 using JoaoHong.APICollection.Domain.Port.Application.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,12 +15,12 @@ namespace JoaoHong.APICollection.API.Controllers
 			_userService = userService;
 		}
 
-		[HttpPost("Criar Usuario")]
-		public async Task<IActionResult> CriarUsuario([FromBody] Users model) 
+		[HttpPost("CreateUser")]
+		public async Task<IActionResult> CreateUser([FromBody] Users model) 
 		{
-			var user = _userService.CreateUser(model);
+			var insertUserResponse = await _userService.CreateUser(model);
 
-			return Ok(user);
+			return Ok(insertUserResponse);
 		}
 	}
 }

@@ -23,7 +23,7 @@ namespace JoaoHong.APICollection.Application.Service.Services
 			{
 				model.Senha = await HashPassword(model.Senha);
 
-				var success = await _usersRepository.InsertAsync(model);
+				var insertReponse = await _usersRepository.InsertAsync(model);
 
 				var response = new GenericResponse();
 

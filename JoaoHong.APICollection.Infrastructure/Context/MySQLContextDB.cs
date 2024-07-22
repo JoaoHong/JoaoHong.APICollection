@@ -19,22 +19,26 @@ namespace JoaoHong.APICollection.Infrastructure.Context
             _configuration = configuration;
         }
 
-        public async Task<MySqlConnection> Connection(string connectionString)
-        {
-            conn = new MySqlConnection(_configuration.GetConnectionString(connectionString));
+		public async Task<MySqlConnection> Connection(string connectionString)
+		{
+			var conn = new MySqlConnection(_configuration.GetConnectionString(connectionString));
 
-            try
-            {
-                conn.Open();
-            }
-            catch (Exception ex)
-            {
-                Dispose();
-            }
-            return conn;
-        }
+			try
+			{
+				await conn.OpenAsync();
+			}
+			catch (Exception ex)
+			{
+				// Log the exception
+				Console.WriteLine($"An error occurred while opening the connection: {ex.Message}");
+				// Optionally, rethrow the exception or handle it as needed
+				throw;
+			}
+			return conn;
+		}
 
-        public async Task<bool> Dispose()
+
+		public async Task<bool> Dispose()
         {
             throw new NotImplementedException();
         }

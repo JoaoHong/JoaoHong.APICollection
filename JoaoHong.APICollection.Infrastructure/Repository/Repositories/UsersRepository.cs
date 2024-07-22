@@ -6,7 +6,7 @@ namespace JoaoHong.APICollection.Infrastructure.Repository.Repositories
 {
 	public class UsersRepository : DapperRepository<Users>, IUsersRepository
 	{
-		public UsersRepository(IMySQLContextDB mySQLContext, string connectionString = null) : base(mySQLContext, connectionString)
+		public UsersRepository(IMySQLContextDB mySQLContext, string connectionString = "MySQL") : base(mySQLContext, connectionString)
 		{
 		}
 	}
