@@ -1,10 +1,11 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using JoaoHong.APICollection.Domain.Port.Application;
+using Microsoft.Extensions.Configuration;
 using System.Security.Cryptography;
 using System.Text;
 
 namespace JoaoHong.APICollection.Application.Service
 {
-	public class EncryptionService
+	public class EncryptionService : IEncryptionService
 	{
 		private readonly IConfiguration _configuration;
 		public EncryptionService(IConfiguration configuration)
@@ -16,14 +17,18 @@ namespace JoaoHong.APICollection.Application.Service
 		{
 			using (var aes = Aes.Create())
 			{
-				aes.Key = Encoding.UTF8.GetBytes(_configuration["Encryption:Key"]);
-				aes.GenerateIV(); 
+				using (var sha256 = SHA256.Create())
+				{
+					aes.Key = sha256.ComputeHash(Encoding.UTF8.GetBytes(_configuration["Encryption:Key"]));
+				}
+
+				aes.GenerateIV();
 				var iv = aes.IV;
 
 				using (var encryptor = aes.CreateEncryptor(aes.Key, iv))
 				using (var ms = new MemoryStream())
 				{
-					ms.Write(iv, 0, iv.Length); 
+					ms.Write(iv, 0, iv.Length);
 					using (var cs = new CryptoStream(ms, encryptor, CryptoStreamMode.Write))
 					using (var sw = new StreamWriter(cs))
 					{

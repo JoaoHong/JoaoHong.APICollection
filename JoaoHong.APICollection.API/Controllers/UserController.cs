@@ -19,7 +19,7 @@ namespace JoaoHong.APICollection.API.Controllers
 		{
 			var user = _userService.CreateUser(model);
 
-			return Ok();
+			return Ok(user);
 		}
 	}
 }

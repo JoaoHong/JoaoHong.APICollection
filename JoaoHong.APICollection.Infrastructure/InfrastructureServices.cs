@@ -14,6 +14,7 @@ namespace JoaoHong.APICollection.Infrastructure
 			service.AddScoped<IMySQLContextDB, MySQLContextDB>();
 			service.AddScoped<IMongoContextDB, MongoContextDB>();
 			service.AddScoped<IApplicationLoggerRepository, ApplicationLoggerRepository>();
+			service.AddScoped<IUsersRepository, UsersRepository>();
 			return service;
 		}
 	}
